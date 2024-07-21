@@ -28,7 +28,7 @@ class articleController extends Controller
 
         $articles= article::find($id);
 
-        return view('/articles/update-article',compact('articles'));
+        return view('articles.update-article',compact('articles'));
 
 
     } 
@@ -39,14 +39,11 @@ class articleController extends Controller
     public function  update(Request $request){
 
         $articles = article::find($request->id);
-        $articles->name=  $request->name;
-        $articles->description=  $request->description;
-        $articles->price=  $request->price;
-        $articles->dateExpirer= $request->dateExpirer;
-        $articles->image=  $request->image;
-        $articles->save();
+
         
-        return dd($articles);
+        $articles->update($request->all());
+
+        return redirect('/articles/show-products');
 
         
     }

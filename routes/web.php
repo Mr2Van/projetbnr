@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[articleController::class,'createArticle'])->name('createArticle');
 Route::get('/articles/update-article',[articleController::class,'updateArticle']);
-
-
-
 Route::get('/articles/show-products',[ articleController::class, 'showProducts'])->name('showProducts');
+
+
+
 Route::post('/articles/{id}', [articleController::class,'edit'])->name('edit');
-Route::put('/articles',[articleController::class,'update']);
+Route::put('/articles/{id}',[articleController::class,'update']);
 
 
 

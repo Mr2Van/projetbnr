@@ -66,20 +66,20 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title mb-5 d-inline">Update Categories</h5>
-          <form method="POST" action="/articles" enctype="multipart/form-data">
-                 @if(isset($articles))
+          <form method="POST" action="/articles/{{$articles->id}}" enctype="multipart/form-data">
+                 
                   @method('put')
                   @csrf
 
                 <!-- Email input -->
                    <div class="form-outline mb-4 mt-4">
-                     <input type="text" name="name" value="{{$articles->name}}" id="form2Example1" class="form-control" placeholder="name" />
+                     <input type="text" name="name" value="{{isset($articles->name) ? $articles->name:'' }}" id="form2Example1" class="form-control" placeholder="name" />
                  
                     </div>
 
                    <div class="form-group">
                    <label for="exampleFormControlTextarea1">Description</label>
-                   <textarea name="description" value=" {{$articles->description}}" placeholder="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                   <textarea name="description" value=" {{isset($articles->description) ? $articles->name:'' }}" placeholder="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                    </div>
 
                   <div class="form-outline mb-4 mt-4">
@@ -104,20 +104,15 @@
                   </div>
 
 
-                @endif
+                
       
                 <!-- Submit button
                                     <button  href="#" class="btn btn-warning text-white text-center ">Update </button>
-
-                
-                
                 -->
 
                 <form action="/articles/show-products-" method="POST">
                   @csrf
                   <button type="submit" name="submit" class="btn btn-primary  mb-4 text-center">update</button>
-
-
                 </form>
 
               </form>
